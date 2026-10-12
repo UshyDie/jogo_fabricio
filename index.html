@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MineFatora | Missão Bloco Comum</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="topbar">
+        <div class="brand-mark" aria-label="MineFatora">MF</div>
+        <div class="brand-copy">
+          <span class="eyebrow">MUNDO DA ÁLGEBRA</span>
+          <h1>Mine<span>Fatora</span></h1>
+        </div>
+        <div class="top-stats">
+          <div>
+            <span class="stat-label">XP</span><strong id="xp">000</strong>
+          </div>
+          <div>
+            <span class="stat-label">MINÉRIOS</span><strong id="ores">0</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="hero-panel" id="home-view">
+        <div class="hero-copy">
+          <p class="kicker">MISSÃO 01 / 8º ANO</p>
+          <h2>Quebre a expressão.<br /><em>Construa a solução.</em></h2>
+          <p class="hero-text">
+            Encontre o fator comum, reúna os blocos e transforme cada expressão
+            em uma forma fatorada.
+          </p>
+          <div class="mode-grid" aria-label="Escolha um modo de jogo">
+            <button class="mode-card active" data-mode="campaign">
+              <span class="mode-icon">▦</span
+              ><span><b>Campanha</b><small>Avance pelas fases</small></span
+              ><i>→</i>
+            </button>
+            <button class="mode-card" data-mode="speed">
+              <span class="mode-icon">◷</span
+              ><span><b>Corrida</b><small>45 segundos por questão</small></span
+              ><i>→</i>
+            </button>
+            <button class="mode-card" data-mode="tutorial">
+              <span class="mode-icon">✦</span
+              ><span
+                ><b>Tutorial</b><small>Fórmulas e exemplos guiados</small></span
+              ><i>→</i>
+            </button>
+            <button class="mode-card" data-mode="bet">
+              <span class="mode-icon">◆</span
+              ><span
+                ><b>Aposta</b><small>Arrisque minérios para dobrar</small></span
+              ><i>→</i>
+            </button>
+          </div>
+          <button class="primary-btn" id="start-btn">
+            COMEÇAR MISSÃO <span>→</span>
+          </button>
+        </div>
+        <div class="hero-art" aria-label="Paisagem de blocos pixelados">
+          <div class="sun"></div>
+          <div class="cloud cloud-a"></div>
+          <div class="cloud cloud-b"></div>
+          <div class="mountain mountain-back"></div>
+          <div class="mountain mountain-front"></div>
+          <div class="tree tree-a"><i></i><b></b></div>
+          <div class="tree tree-b"><i></i><b></b></div>
+          <div class="terra-block" aria-label="Bloco de terra terracota">
+            <span>▪</span><small>TERRA</small>
+          </div>
+          <div class="ore-block"><span>◆</span><small>MINÉRIO</small></div>
+        </div>
+      </section>
+
+      <section class="tutorial-view hidden" id="tutorial-view">
+        <div class="tutorial-topbar">
+          <button class="back-btn" id="tutorial-back">← MENU</button>
+          <div class="mission-name">
+            <span>GUIA DO EXPLORADOR</span><strong>APRENDA A FATORAR</strong>
+          </div>
+          <div class="tutorial-counter" id="tutorial-counter">1 / 5</div>
+        </div>
+        <div class="tutorial-layout">
+          <nav
+            class="topic-list"
+            aria-label="Temas de fatoração"
+            id="topic-list"
+          ></nav>
+          <article class="lesson-card">
+            <p class="kicker" id="lesson-category">FATORAÇÃO</p>
+            <h2 id="lesson-title"></h2>
+            <p class="lesson-intro" id="lesson-intro"></p>
+            <div class="formula-card">
+              <span>FÓRMULA</span><strong id="lesson-formula"></strong>
+            </div>
+            <div class="lesson-columns">
+              <div>
+                <h3>COMO RECONHECER</h3>
+                <p id="lesson-recognize"></p>
+              </div>
+              <div>
+                <h3>COMO RESOLVER</h3>
+                <ol id="lesson-steps"></ol>
+              </div>
+            </div>
+            <div class="lesson-example">
+              <span>EXEMPLO RESOLVIDO</span
+              ><strong id="lesson-example"></strong>
+              <p id="lesson-result"></p>
+            </div>
+            <div class="tutorial-actions">
+              <button class="secondary-btn" id="lesson-prev">← ANTERIOR</button
+              ><button class="primary-btn" id="lesson-next">
+                PRÓXIMO TEMA <span>→</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="play-view hidden" id="play-view">
+        <div class="play-head">
+          <button class="back-btn" id="back-btn">← MENU</button>
+          <div class="mission-name">
+            <span id="mode-label">CAMPANHA</span
+            ><strong id="question-count">FASE 01 / 22</strong>
+          </div>
+          <div class="timer" id="timer">∞</div>
+        </div>
+        <div class="progress-track"><div id="progress-bar"></div></div>
+        <div class="question-layout">
+          <aside class="side-panel">
+            <div class="avatar">☻</div>
+            <p class="npc-name">PROF. CUBO</p>
+            <p class="npc-speech">
+              “Toda expressão guarda um padrão. Encontre o maior bloco que todos
+              compartilham.”
+            </p>
+            <div class="hearts" id="hearts">♥ ♥ ♥</div>
+            <div class="streak">
+              <small>SEQUÊNCIA</small><strong id="streak">0</strong>
+            </div>
+          </aside>
+          <div class="question-card">
+            <div class="question-tag">FATORE A EXPRESSÃO</div>
+            <h2 id="expression">12x⁴ + 18x³ + 3x⁵</h2>
+            <p class="question-hint">
+              Retire o maior fator comum de todos os termos.
+            </p>
+            <div class="tutorial-guide hidden" id="tutorial-guide"></div>
+            <div class="bet-panel hidden" id="bet-panel">
+              <label>APOSTA AUTOMÁTICA</label>
+              <div>
+                <strong id="bet-wager">0 minérios</strong
+                ><span> serão apostados nesta questão</span>
+              </div>
+              <small
+                >Você precisa ter pelo menos 10 minérios. Acertou? recebe o
+                dobro. Errou ou acabou o tempo? perde tudo.</small
+              >
+              <p class="bet-alert hidden" id="bet-alert" role="alert"></p>
+            </div>
+            <div class="answer-row">
+              <span>ESCOLHA A RESPOSTA CORRETA:</span>
+              <div
+                class="options-grid"
+                id="options"
+                role="radiogroup"
+                aria-label="Opções de fatoração"
+              ></div>
+              <button id="submit-btn" class="submit-btn" disabled>
+                MINERAR
+              </button>
+            </div>
+            <div class="quick-hints">
+              <button id="hint-btn">
+                ◈ PEDIR DICA <b id="hint-cost">-5 XP</b></button
+              ><span id="hint-text"></span>
+            </div>
+            <div class="feedback hidden" id="feedback"></div>
+            <button class="explain-btn hidden" id="explain-btn">
+              VER COMO FAZER ↗</button
+            ><button class="next-btn hidden" id="next-btn">
+              PRÓXIMO BLOCO →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="end-view hidden" id="end-view">
+        <div class="end-icon">◆</div>
+        <p class="kicker">MISSÃO CONCLUÍDA</p>
+        <h2 id="end-title">Mina explorada!</h2>
+        <p id="end-summary"></p>
+        <div class="end-stats">
+          <div><strong id="final-score">0</strong><span>XP GANHO</span></div>
+          <div>
+            <strong id="final-correct">0/10</strong><span>ACERTOS</span>
+          </div>
+          <div>
+            <strong id="final-streak">0</strong><span>MELHOR SEQUÊNCIA</span>
+          </div>
+        </div>
+        <button class="primary-btn" id="replay-btn">
+          JOGAR DE NOVO <span>↻</span>
+        </button>
+      </section>
+    </main>
+    <footer>
+      MINÉFATORA <span>•</span> Fatoração algébrica para exploradores do 8º ano
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>
